@@ -13,34 +13,20 @@ $("#StartButton").click(function () {
         };
         $("#timer").text("Time left: " + count)
 
+
     }
-    
+
 });
 
 
 
-function clearAnswers() {
-    $("img").each(function () {
-        $(this).remove();
-    })
-};
-
-function markIncorrect(el) {
-    var yes = $("<p>Correct!</p>")
-    el.append(yes)
-};
-
-function markCorrect(el) {
-    var no = $("<p>Incorrect!</p>")
-    el.append(no);
-};
 
 var correct = 0;
 var incorrect = 0;
 
 $("form").on("submit", function (e) {
     e.preventDefault();
-    clearAnswers();
+    // clearAnswers();
 
 
     $questions = $(".question");
@@ -49,19 +35,24 @@ $("form").on("submit", function (e) {
             key = answer.attr("name"),
             val = answer.attr("value");
 
-        if (answers[key] === val) {
-            markCorrect($(this).find("p"));
-            correct++
+        if (answers[key] === 0) {
+            
+            
         }
         else if (answers[key] !== val) {
-            markIncorrect($(this).find("p"));
-            incorrect++
+           
+            incorrect++;
+        }
+        else {
+           
+            correct++;
         }
 
 
     });
-    
+
     $("#percentage").text((correct + " Questions Right! ") + (incorrect + (" Questions Wrong!")));
+    
 
 });
 
