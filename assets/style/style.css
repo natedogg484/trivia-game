@@ -1,0 +1,11 @@
+#startScreen, 
+#loseScreen,
+#game {
+    font-family: 'Charmonman', cursive;
+    font-size: 25px;
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+};

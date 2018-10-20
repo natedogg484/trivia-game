@@ -1,24 +1,47 @@
+$("#StartButton").click(function () {
+    $("#startScreen").hide();
+    $("#game").show();
+
+    var count = 91
+    var counter = setInterval(timer, 1000)
+    function timer() {
+        count = count - 1;
+        if (count <= 0) {
+            $('#game').hide();
+            $('#loseScreen').show();
+
+        };
+        $("#timer").text("Time left: " + count)
+
+    }
+    
+});
+
+
+
 function clearAnswers() {
     $("img").each(function () {
         $(this).remove();
     })
-}
+};
 
 function markIncorrect(el) {
-    var img = new Image();
-    img.src = '';
-    el.append(img);
-}
+    var yes = $("<p>Correct!</p>")
+    el.append(yes)
+};
 
 function markCorrect(el) {
-    var img = new Image();
-    img.src = '';
-    el.append(img);
-}
+    var no = $("<p>Incorrect!</p>")
+    el.append(no);
+};
+
+var correct = 0;
+var incorrect = 0;
 
 $("form").on("submit", function (e) {
     e.preventDefault();
     clearAnswers();
+
 
     $questions = $(".question");
     $questions.each(function () {
@@ -28,17 +51,18 @@ $("form").on("submit", function (e) {
 
         if (answers[key] === val) {
             markCorrect($(this).find("p"));
-            console.log("yay!")
+            correct++
         }
         else if (answers[key] !== val) {
             markIncorrect($(this).find("p"));
-            console.log("sorry man!")
-        }
-        else if ( "input:checked" === false) {
-            markIncorrect($(this).find("p"));
+            incorrect++
         }
 
+
     });
+    
+    $("#percentage").text((correct + " Questions Right! ") + (incorrect + (" Questions Wrong!")));
+
 });
 
 

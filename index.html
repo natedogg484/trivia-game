@@ -6,28 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LOTR Trivia</title>
+    <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+    <!-- jquery -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
 
 <body>
-    <div class="container bg-success text-warning">
-
+    <!-- start screen -->
+    <div class="container bg-success text-warning text-center" id="startScreen">
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <h1 class="text-center">LOTR: Trivia Game!!</h1>
-                <p>Select the corect answer for the questions from the seletion of answers given below each! Hit
-                    submit to see if you're right or not</p>
+                <p class="text-center">Select the corect answer for the questions from the seletion of answers given
+                    below each! Hit submit to see if you're right or not! Answer before time runs out or the Eye of
+                    Sauron might find you!!</p>
             </div>
             <div class="col-md-3"></div>
         </div>
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2 text-center">
+                <input id="StartButton" type="button" value="Start" />
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 text-center">
+                <img src="assets\images\ring.jpg">
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+    </div>
+    <!-- You lose! -->
+    <div class="container bg-success text-warning text center" id="loseScreen" style="display: none;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1>You lose!! Sauron will surely dominate Middle-Earth!!</h1>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <img src="assets\images\sauron.jpg">
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+    <!-- game time -->
+    <div class="container bg-success text-warning" id="game" style="display: none;">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-center">
+                <h2>How much do you know about Middle Earth??</h2>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+        <!-- timer -->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" id="timer">
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <!-- questions -->
         <form>
             <div class="row">
                 <div class="col-md-3"></div>
-                <div class="col-md-6" id="questionOne">
-
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q1</strong>: Who is Gimli the son of?</h4>
@@ -41,122 +96,175 @@
                         <label>
                             <input type="radio" name="one" value="d">Legolas</label>
                     </div>
-                    <div class="question">
-                        <p>
-                            <h4><strong>Q2</strong>: What race is Gandalf?</h4>
-                        </p>
-                        <label>
-                            <input type="radio" name="two" value="a">Man</label>
-                        <label>
-                            <input type="radio" name="two" value="b">Dwarf</label>
-                        <label>
-                            <input type="radio" name="two" value="c">Elf</label>
-                        <label>
-                            <input type="radio" name="two" value="d">Maiar</label>
-                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q3</strong>: Which "wizard" is the strongest in the beginning of LOTR?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Saruman</label>
+                            <input type="radio" name="three" value="a">Saruman</label>
                         <label>
-                            <input type="radio" name="two" value="b">Radagast</label>
+                            <input type="radio" name="three" value="b">Radagast</label>
                         <label>
-                            <input type="radio" name="two" value="c">Celebrimbor</label>
+                            <input type="radio" name="three" value="c">Celebrimbor</label>
                         <label>
-                            <input type="radio" name="two" value="d">Gandalf</label>
+                            <input type="radio" name="three" value="d">Gandalf</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="question">
+                        <p>
+                            <h4><strong>Q3</strong>: Which "wizard" is the strongest in the beginning of LOTR?</h4>
+                        </p>
+                        <label>
+                            <input type="radio" name="three" value="a">Saruman</label>
+                        <label>
+                            <input type="radio" name="three" value="b">Radagast</label>
+                        <label>
+                            <input type="radio" name="three" value="c">Celebrimbor</label>
+                        <label>
+                            <input type="radio" name="three" value="d">Gandalf</label>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q4</strong>: How many rings were created for the Elf-Lords?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Nine</label>
+                            <input type="radio" name="four" value="a">Nine</label>
                         <label>
-                            <input type="radio" name="two" value="b">Eight</label>
+                            <input type="radio" name="four" value="b">Eight</label>
                         <label>
-                            <input type="radio" name="two" value="c">Seven</label>
+                            <input type="radio" name="four" value="c">Seven</label>
                         <label>
-                            <input type="radio" name="two" value="d">Three</label>
+                            <input type="radio" name="four" value="d">Three</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q5</strong>: Who created the rings for the Elf-Lords</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Elrond</label>
+                            <input type="radio" name="five" value="a">Elrond</label>
                         <label>
-                            <input type="radio" name="two" value="b">Smaug</label>
+                            <input type="radio" name="five" value="b">Smaug</label>
                         <label>
-                            <input type="radio" name="two" value="c">Celebrimbor</label>
+                            <input type="radio" name="five" value="c">Celebrimbor</label>
                         <label>
-                            <input type="radio" name="two" value="d">Beorn</label>
+                            <input type="radio" name="five" value="d">Beorn</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q6</strong>: What race of Man lives longer lives?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Man</label>
+                            <input type="radio" name="six" value="a">Man</label>
                         <label>
-                            <input type="radio" name="two" value="b">Dwarf</label>
+                            <input type="radio" name="six" value="b">Dwarf</label>
                         <label>
-                            <input type="radio" name="two" value="c">Dunedain</label>
+                            <input type="radio" name="six" value="c">Dunedain</label>
                         <label>
-                            <input type="radio" name="two" value="d">Maia</label>
+                            <input type="radio" name="six" value="d">Maia</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q7</strong>: Who were the Nazgul before they became "Ringwraiths"?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Kings of Men</label>
+                            <input type="radio" name="seven" value="a">Kings of Men</label>
                         <label>
-                            <input type="radio" name="two" value="b">Elven Kings</label>
+                            <input type="radio" name="seven" value="b">Elven Kings</label>
                         <label>
-                            <input type="radio" name="two" value="c">Very Angry Men</label>
+                            <input type="radio" name="seven" value="c">Very Angry Men</label>
                         <label>
-                            <input type="radio" name="two" value="d">Uncorrupted Maiar</label>
+                            <input type="radio" name="seven" value="d">Uncorrupted Maiar</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q8</strong>: How many "wizards" like Gandalf are there in total?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Five</label>
+                            <input type="radio" name="eight" value="a">Five</label>
                         <label>
-                            <input type="radio" name="two" value="b">Nine</label>
+                            <input type="radio" name="eight" value="b">Nine</label>
                         <label>
-                            <input type="radio" name="two" value="c">Seven</label>
+                            <input type="radio" name="eight" value="c">Seven</label>
                         <label>
-                            <input type="radio" name="two" value="d">Thirty-Seven</label>
+                            <input type="radio" name="eight" value="d">Thirty-Seven</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q9</strong>: What race is Aragorn a part of?</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Man</label>
+                            <input type="radio" name="nine" value="a">Man</label>
                         <label>
-                            <input type="radio" name="two" value="b">Half-Elf</label>
+                            <input type="radio" name="nine" value="b">Half-Elf</label>
                         <label>
-                            <input type="radio" name="two" value="c">Dunedain</label>
+                            <input type="radio" name="nine" value="c">Dunedain</label>
                         <label>
-                            <input type="radio" name="two" value="d">Maia</label>
+                            <input type="radio" name="nine" value="d">Maia</label>
                     </div>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
                     <div class="question">
                         <p>
                             <h4><strong>Q10</strong>: Who is the master of the Old Forest</h4>
                         </p>
                         <label>
-                            <input type="radio" name="two" value="a">Bilbo Baggins</label>
+                            <input type="radio" name="ten" value="a">Bilbo Baggins</label>
                         <label>
-                            <input type="radio" name="two" value="b">Tom Bombadil</label>
+                            <input type="radio" name="ten" value="b">Tom Bombadil</label>
                         <label>
-                            <input type="radio" name="two" value="c">Treebeard</label>
+                            <input type="radio" name="ten" value="c">Treebeard</label>
                         <label>
-                            <input type="radio" name="two" value="d">Gandalf, the White</label>
+                            <input type="radio" name="ten" value="d">Gandalf, the White</label>
                     </div>
                 </div>
                 <div class="col-md-3"></div>
@@ -169,8 +277,16 @@
             </div>
 
         </form>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h4 id="percentage"></h4>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
     </div>
-    </div>
+
+
 
 
 
